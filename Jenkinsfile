@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Jenkins Minute Pipeline'
+        input(message: 'Hello?', ok: 'Works!')
       }
     }
   }

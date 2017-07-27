@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Jenkins Minute Pipeline'
-        input(message: 'Hello?', ok: 'Works!')
-        echo 'Hello'
-        sh 'echo Build'
+        ssh './mvnw -B clean package'
+     stash name: 'war', includes: 'target'
       }
+     }
     }
+   }
     stage('Backend') {
       steps {
         parallel(

@@ -10,24 +10,26 @@ pipeline {
     }
    }
     stage('Backend') {
-      steps {
-        parallel(
-          "Unit": {
-            sh 'echo Unit'
-            
-          },
-          "Performance": {
-            sh 'echo Performance'
-            
-          }
-        )
+   steps {
+     parallel(
+       'Unit' : {
+         unstash 'war'
+         sh './mvnw -B test'
+         junit '**/surefire-reports/**/*.xml'
+        },
+        'Performance' : {
+          unstash 'war'
+          sh './mvnw -B gatling:execute'
+       })
+       }
       }
     }
-    stage('Frontend') {
-      steps {
-        sh 'echo Frontend'
-      }
-    }
+    stage('Frontend Test') {
+   steps {
+     sh 'yarn install'
+     sh 'yarn global add gulp-cli'
+     sh 'gulp test'
+} }
     stage('Static Analysis') {
       steps {
         sh 'echo Static Analysis'

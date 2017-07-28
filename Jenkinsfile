@@ -7,7 +7,6 @@ pipeline {
      stash name: 'war', includes: 'target'
       }
      }
-    }
     stage('Backend') {
    steps {
      parallel(
@@ -39,3 +38,4 @@ pipeline {
       }
     }
   }
+}

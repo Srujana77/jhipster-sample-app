@@ -8,7 +8,6 @@ pipeline {
       }
      }
     }
-   }
     stage('Backend') {
    steps {
      parallel(
@@ -23,7 +22,6 @@ pipeline {
        })
        }
       }
-    }
     stage('Frontend Test') {
    steps {
      sh 'yarn install'
@@ -41,4 +39,3 @@ pipeline {
       }
     }
   }
-}

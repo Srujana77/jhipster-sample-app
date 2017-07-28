@@ -14,8 +14,8 @@ pipeline {
          echo "*****************************UNIT TEST WORKING**************************************"
         },
         'Performance' : {
-          /*unstash 'war'
-          sh './mvnw -B gatling:execute'*/
+          unstash 'war'
+          /*sh './mvnw -B gatling:execute'*/
          echo "*****************************PERFORMANCE TEST WORKING**************************************"   
        })
        }

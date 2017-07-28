@@ -22,18 +22,18 @@ pipeline {
       }
     stage('Frontend Test') {
    steps {
-     sh 'yarn install'
+     /*sh 'yarn install'
      sh 'yarn global add gulp-cli'
-     sh 'gulp test'
+     sh 'gulp test'*/
 } }
     stage('Static Analysis') {
       steps {
-        sh 'echo Static Analysis'
+       // sh 'echo Static Analysis'
       }
     }
     stage('Deploy') {
       steps {
-        sh 'echo Deploy'
+        //sh 'echo Deploy'
       }
     }
   }

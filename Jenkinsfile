@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        ssh './mvnw -B clean package'
+        sh './mvnw -B clean package'
      stash name: 'war', includes: 'target'
       }
      }

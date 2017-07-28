@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh './mvnw -B clean package -DskipTests=true '
-     stash name: 'war', includes: 'target'
+     //stash name: 'war', includes: 'target'
       }
      }
     stage('Backend') {
@@ -14,7 +14,7 @@ pipeline {
          echo "*****************************UNIT TEST WORKING**************************************"
         },
         'Performance' : {
-          unstash 'war'
+       //   unstash 'war'
           /*sh './mvnw -B gatling:execute'*/
          echo "*****************************PERFORMANCE TEST WORKING**************************************"   
        })
